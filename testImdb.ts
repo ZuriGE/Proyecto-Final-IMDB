@@ -136,10 +136,17 @@ let myFilmsString = JSON.stringify(myFilms);
 
 fs.writeFileSync("imdbBBDD.json", myFilmsString);
 
-const data = fs.readFileSync("./imdbBBDD.json");
+const data = fs.readFileSync("./imdbBBDD.json", { encoding: "utf8" });
 
 const parsedData = JSON.parse(data);
 
-let myFilms2 = new Imdb(parsedData);
+let myFilms2 = new Imdb(parsedData.peliculas);
 
-console.log(myFilms2);
+for (let i = 0; i < parsedData.peliculas.length; i++) {
+    parsedData.peliculas[i] = new Movie(parsedData.peliculas[i].title, parsedData.peliculas[i].releaseYear,
+        parsedData.peliculas[i].nationality, parsedData.peliculas[i].genre)
+    
+}
+
+myFilms2.peliculas.forEach((film)=> film.printAll())
+myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
