@@ -2,6 +2,8 @@ import { Movie } from "./movie";
 import { Professional } from "./professional";
 import { Imdb } from "./imdb";
 
+const fs = require('fs');
+
 /*
 TESTS ABAJO DEL TODO
 */
@@ -127,3 +129,17 @@ console.log(myFilms)
 myFilms.peliculas.forEach((film)=> film.printAll())
 
 myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
+
+// Lectura/Escritura en Fichero
+
+let myFilmsString = JSON.stringify(myFilms);
+
+fs.writeFileSync("imdbBBDD.json", myFilmsString);
+
+const data = fs.readFileSync("./imdbBBDD.json");
+
+const parsedData = JSON.parse(data);
+
+let myFilms2 = new Imdb(parsedData);
+
+console.log(myFilms2);
