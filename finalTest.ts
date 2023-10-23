@@ -4,18 +4,12 @@ import { Imdb } from "./imdb";
 import { Movie } from "./movie";
 import { Professional } from "./professional";
 
-///cuando esté hecho el paso 7  hay que llamar a los métodos en vez de usar esto
-const data = fs.readFileSync("./imdbBBDD.json", { encoding: "utf8" });
 
-const parsedData = JSON.parse(data);
+///Modificado para usar los métodos definidos en el paso 7
+let myFilms:Imdb = Imdb.obtenerInstanciaIMDB("./imdbBBDD")
+console.log(myFilms)
 
-let myFilms = new Imdb(parsedData.peliculas);
 
-for (let i = 0; i < parsedData.peliculas.length; i++) {
-    parsedData.peliculas[i] = new Movie(parsedData.peliculas[i].title, parsedData.peliculas[i].releaseYear,
-        parsedData.peliculas[i].nationality, parsedData.peliculas[i].genre)  
-}
-///
 
 ///Arrays que sirven para que el usuario pueda escoger entre las opciones disponibles al preguntar por consola
 let filmList:string[] = myFilms.peliculas.map((value) => value.title);
@@ -93,6 +87,9 @@ while (checkIndex != 0 && checkIndex !=10){
             break;
         case 3:
             newAge = rls.question(`Please enter ${newName}'s correct age?\n`);
+            while(isNaN(newAge)){
+                newAge = parseInt(rls.question(`The age has to be a number\n`))
+            }
             newProfessional.age = newAge;
             break;
         case 4:
@@ -106,14 +103,23 @@ while (checkIndex != 0 && checkIndex !=10){
             break;
         case 6:
             newWeight = rls.question(`Insert ${newName}'s weight\nNOTE: Please use kg\n`);
+            while(isNaN(newWeight)){
+                newWeight = parseInt(rls.question(`The weight has to be a number\n`))
+            }
             newProfessional.weight = newWeight;
             break;    
         case 7:
             newHeight = rls.question(`Insert ${newName}'s height\nNOTE: Please use cm\n`);
+            while(isNaN(newHeight)){
+                newHeight = parseInt(rls.question(`The height has to be a number\n`))
+            }
             newProfessional.height = newHeight;
             break;    
         case 8:
             newOscarsNumber =  rls.question(`Please enter the correct amount of oscars\n`);
+            while(isNaN(newOscarsNumber)){
+                newOscarsNumber = parseInt(rls.question(`The amount of oscars has to be a number\n`))
+            }
             newProfessional.oscarsNumber = newOscarsNumber;
             break;
         case 9:
@@ -128,9 +134,19 @@ while (checkIndex != 0 && checkIndex !=10){
 }
 
 
-/*
-con esto tenemos:
-- newProfesional: el obj de clase Professional que queremos añadir (push si es actor, remplazar si es director o writer)
-- newProfession o newProfessional.proffesion: actor, director, writer
-- filmList[filmIndex] >> myFilms.peliculas[filmIndex]: para sacar la película que queremos actualizar dentro de películas del objeto de clase Imdb
-*/
+// con esto tenemos:
+// - newProfesional: el obj de clase Professional que queremos añadir (push si es actor, remplazar si es director o writer)
+// - newProfession o newProfessional.proffesion: actor, director, writer
+// - filmList[filmIndex] >> myFilms.peliculas[filmIndex]: para sacar la película que queremos actualizar dentro de películas del objeto de clase Imdb
+
+
+if (newProfession == 'actor'){
+    myFilms.peliculas[filmIndex].actors.push(newProfessional)
+}else if (newProfession == 'director'){
+    myFilms.peliculas[filmIndex].director = newProfessional
+}else{
+    myFilms.peliculas[filmIndex].writer = newProfessional
+}
+
+myFilms.escribirEnFicheroJSON("imdbBBDD")
+

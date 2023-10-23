@@ -15,15 +15,15 @@ export class Imdb {
         fs.writeFileSync(`${nombreFichero}.json`, stringified);
     }
 
-    obtenerInstanciaIMDB(nombreFichero:string): Imdb {
+    static obtenerInstanciaIMDB(nombreFichero:string): Imdb {
         const data = fs.readFileSync(`${nombreFichero}.json`, { encoding: "utf8" });
         const parsedData = JSON.parse(data);
-        console.log(parsedData)
+        // console.log(parsedData)
         for (let i = 0; i < parsedData.length; i++) {
             parsedData[i] = new Movie(parsedData[i].title, parsedData[i].releaseYear,
             parsedData[i].nationality, parsedData[i].genre)
         }
-        return new Imdb(parsedData);
+        return new Imdb(parsedData.peliculas);
     }
 
 }
