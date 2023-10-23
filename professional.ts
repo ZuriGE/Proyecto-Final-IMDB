@@ -23,14 +23,8 @@ export class Professional {
     }
     
     public showData(): string {
-        return `${this.name}
-${this.age}
-${this.weight}
-${this.height}
-${this.isRetired}
-${this.nationality}
-${this.oscarsNumber}
-${this.profession}`
+        const keys = Object.keys(this);
+        return keys.map((key) => `${key}: ${this[key]}`).join('\n');
     }
 
 }
