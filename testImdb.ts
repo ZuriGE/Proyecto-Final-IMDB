@@ -153,4 +153,6 @@ myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.sh
 
 myFilms.escribirEnFicheroJSON("myFilms");
 
-myFilms.obtenerInstanciaIMDB("./myFilms");
+let myFilms2 = myFilms.obtenerInstanciaIMDB("./myFilms");
+myFilms2.peliculas.forEach((film)=> film.printAll())
+myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
