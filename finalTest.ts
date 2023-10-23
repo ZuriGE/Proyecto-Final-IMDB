@@ -4,8 +4,6 @@ import { Imdb } from "./imdb";
 import { Movie } from "./movie";
 import { Professional } from "./professional";
 
-
-///Modificado para usar los métodos definidos en el paso 7
 let myFilms:Imdb = Imdb.obtenerInstanciaIMDB("./imdbBBDD")
 
 ///Arrays que sirven para que el usuario pueda escoger entre las opciones disponibles al preguntar por consola
@@ -68,7 +66,6 @@ if (filmIndex === -1) {
         let checkIndex:number = -1
         while (checkIndex != 0 && checkIndex !=10){
             
-            ///No sé si showData() de  la clase profesional se podría modificar para incluir el nombre del atributo (en el enunciadono pide esto)
             console.log(`New ${jobList[jobIndex].toLowerCase()} will be added to the film ${filmList[filmIndex]}.\n\n · Name: ${newName}\n · Age: ${newAge}\n · Weight: ${newWeight}\n · Height: ${newHeight}\n · Is retired?: ${yesOrNo[isRetiredIndex]}\n · Nationality: ${newNationality}\n · Number of oscars: ${newOscarsNumber}\n · Profession: ${jobList[jobIndex]}`)
         
             checkIndex =  rls.keyInSelect(listAttributes, 'Please check the data and select the information you want to correct')
