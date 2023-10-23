@@ -33,7 +33,7 @@ if (filmIndex === -1) {
         console.log(`If you want to update information from ${filmList[filmIndex]}, please run the code again.`)
     } else {
         console.log("You selected: " + jobList[jobIndex]);
-        newProfession = jobIndex ==1 ? 'actor':jobList[jobIndex].toLowerCase()
+        newProfession = jobIndex ==0 ? 'actor':jobList[jobIndex].toLowerCase()
         let newName:string = rls.question(`Please enter the name of the ${jobList[jobIndex].toLowerCase()} you want to add.\n`);
         let newAge:number = parseInt(rls.question(`How old is ${newName}?\n`));
         while(isNaN(newAge)){
@@ -119,7 +119,7 @@ if (filmIndex === -1) {
                     break;
                 case 9:
                     jobIndex = rls.keyInSelect(jobList, 'Please select the correct profession');
-                    newProfession = jobIndex ==1 ? 'actor':jobList[jobIndex].toLowerCase();
+                    newProfession = jobIndex ==0 ? 'actor':jobList[jobIndex].toLowerCase();
                     newProfessional.profession = newProfession;
                     break;
                 default:
