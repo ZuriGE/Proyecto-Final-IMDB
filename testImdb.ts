@@ -132,21 +132,25 @@ myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.sh
 
 // Lectura/Escritura en Fichero
 
-let myFilmsString = JSON.stringify(myFilms);
+// let myFilmsString = JSON.stringify(myFilms);
 
-fs.writeFileSync("imdbBBDD.json", myFilmsString);
+// fs.writeFileSync("imdbBBDD.json", myFilmsString);
 
-const data = fs.readFileSync("./imdbBBDD.json", { encoding: "utf8" });
+// const data = fs.readFileSync("./imdbBBDD.json", { encoding: "utf8" });
 
-const parsedData = JSON.parse(data);
+// const parsedData = JSON.parse(data);
 
-let myFilms2 = new Imdb(parsedData.peliculas);
+// let myFilms2 = new Imdb(parsedData.peliculas);
 
-for (let i = 0; i < parsedData.peliculas.length; i++) {
-    parsedData.peliculas[i] = new Movie(parsedData.peliculas[i].title, parsedData.peliculas[i].releaseYear,
-        parsedData.peliculas[i].nationality, parsedData.peliculas[i].genre)
+// for (let i = 0; i < parsedData.peliculas.length; i++) {
+//     parsedData.peliculas[i] = new Movie(parsedData.peliculas[i].title, parsedData.peliculas[i].releaseYear,
+//         parsedData.peliculas[i].nationality, parsedData.peliculas[i].genre)
     
-}
+// }
 
-myFilms2.peliculas.forEach((film)=> film.printAll())
-myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
+// myFilms2.peliculas.forEach((film)=> film.printAll())
+// myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
+
+myFilms.escribirEnFicheroJSON("myFilms");
+
+myFilms.obtenerInstanciaIMDB("./myFilms");
