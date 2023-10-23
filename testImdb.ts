@@ -124,8 +124,6 @@ myMovie5.writer = writer5;
 
 let myFilms = new Imdb([myMovie0,myMovie1,myMovie2,myMovie3,myMovie4,myMovie5])
 
-// console.log(myFilms)
-
 // myFilms.peliculas.forEach((film)=> film.printAll())
 
 // myFilms.peliculas[3].actors.forEach((actor_actriz)=>(console.log(actor_actriz.showData())))
