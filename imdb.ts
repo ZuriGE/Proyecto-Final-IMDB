@@ -23,7 +23,7 @@ export class Imdb {
             parsedData[i] = new Movie(parsedData[i].title, parsedData[i].releaseYear,
             parsedData[i].nationality, parsedData[i].genre)
         }
-        return new Imdb(parsedData.peliculas);
+        return new Imdb(parsedData);
     }
 
 }

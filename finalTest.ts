@@ -17,6 +17,7 @@ let jobList:string[]=['Actor/Actress','Director','Writer'];
 let yesOrNo:string[]=['YES','NO'];
 let listAttributes:string[] = ['All the data is correct','Movie','Name', 'Age', 'Retired', 'Nationality', 'Weight', 'Height','Number of oscars', 'Profession'];
 
+
 ///selección de película
 console.log('Which film would you like to update? '); //pongo el log antes en vez de meterlo todo en la pregunta porque si no queda raro
 let filmIndex = rls.keyInSelect(filmList, 'Please choose one of the options above.'); 
@@ -133,12 +134,10 @@ while (checkIndex != 0 && checkIndex !=10){
     }
 }
 
-
 // con esto tenemos:
 // - newProfesional: el obj de clase Professional que queremos añadir (push si es actor, remplazar si es director o writer)
 // - newProfession o newProfessional.proffesion: actor, director, writer
 // - filmList[filmIndex] >> myFilms.peliculas[filmIndex]: para sacar la película que queremos actualizar dentro de películas del objeto de clase Imdb
-
 
 if (newProfession == 'actor'){
     myFilms.peliculas[filmIndex].actors.push(newProfessional)
